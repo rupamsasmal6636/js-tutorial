@@ -22,6 +22,8 @@ const bigNumber = 3456543576654356754n // bigint
 
 const heros = ["shaktiman", "naagraj", "doga"];  // Array object
 
+const myArr = [1,2,3] // another array object
+
 let myObj = {
     name: "hitesh",
     age: 22,
@@ -31,6 +33,9 @@ const myFunction = function(){
     console.log("Hello world");
 }
 
-console.log(typeof myFunction);
+console.log(typeof heros); // object
+console.log(typeof myArr); // object
+console.log(typeof myObj); // object 
+console.log(typeof myFunction); // function
 
 // https://262.ecma-international.org/5.1/#sec-11.4.3

@@ -5,8 +5,8 @@
 // console.log(2 != 1);
 
 
-// console.log("2" > 1);
-// console.log("02" > 1);
+console.log("2" > 1); // true -> js will convert "2" to 2 but if we use === then return false
+console.log("02" > 1); // true
 
 console.log(null > 0); // false
 console.log(null == 0); // false
