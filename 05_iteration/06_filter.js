@@ -17,9 +17,10 @@ myNums.forEach((nums)=> {
 console.log(newArr); // now it will work
 
 
-// here comes the concept of filter()... it will return if condition is true
+// here comes the concept of filter()... it will return current iterators if condition is true
 
-let filterArray= myNums.filter((nums)=> nums>4);
+// let filterArray= myNums.filter((nums)=> nums>4);
+let filterArray= myNums.filter((nums)=> nums<=4);
 console.log(filterArray);
 
 const books = [
