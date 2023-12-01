@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    // adding more li: [using function]
+    function addLanguage(name) {
+        const list=document.createElement('li');
+        list.innerText=name;
+        document.querySelector('.language').appendChild(list);
+    }
+    addLanguage("python")
+    addLanguage("c++")
+
+    // optimized way:
+    function optimizedWaytoAddLanguage(name) {
+        const li=document.createElement('li');
+        li.appendChild(document.createTextNode(name));
+        document.querySelector('.language').appendChild(li);
+    }
+    optimizedWaytoAddLanguage("typeScript")
+
+    // selecting n-th li and edit:
+    const secList = document.querySelector('li:nth-child(3)');
+    // another way to change inner text:
+    secList.innerHTML="C#"
+    // another way:
+    const newLi = document.createElement('li');
+    newLi.textContent = ".net"
+    secList.replaceWith(newLi)
+
+    // another way to edit:
+    const firstLi=document.querySelector('li:first-child');
+    firstLi.outerHTML='<li>django</li>'
+
+    // remove element: 
+    const lastLi=document.querySelector('li:last-child');
+    lastLi.remove()
+</script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading"> DOM Learning <span style="display: none;">test text</span></h1>
+        <h2> heading 2</h2>
+        <h2> heading 3</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!-- ****************** All the selectors *******************
+
+1. getElementById()
+
+>  document.getElementById('title').id
+<- 'title'
+
+>  document.getElementById('title').class
+<- undefined
+
+>  document.getElementById('title').className
+<- 'heading'
+
+>  document.getElementById('title').getAttribute('id')
+<- 'title'
+
+>  document.getElementById('title').getAttribute('class')
+<- 'heading'
+
+> document.getElementById('title').setAttribute('class', 'myHeading')   // it will override, so if we don't give previos name it will lost
+
+> document.getElementById('title').setAttribute('class', 'myHeading heading')   // now both heading and myHeading will be there
+
+> const title = document.getElementById('title') // to store title element
+
+> title.style.backgroundColor= 'green' // now we can change the css
+
+> title.style.padding='16px'
+
+********** Differenece between innerHTML, textContent, innerText ***********
+in normal scenario, for example =>  <h1 id="title" class="heading"> DOM Learning </h1>
+all will be working similar but....
+
+if the example is like => <h1 id="title" class="heading"> DOM Learning <span style="display: none;">test text</span></h1>
+then the output will be like this=>
+>  title.textContent
+<- ' DOM Learning test text'
+
+>  title.innerText
+<- 'DOM Learning'
+
+>  title.innerHTML
+<- ' DOM Learning <span style="display: none;">test text</span>'
+ 
+
+
+
+2. getElementByClassName()  : [it returns HTMLCollection list]
+
+>  document.getElementsByClassName('heading')
+<- HTMLCollection [h1#title.heading, title: h1#title.heading]
+    0 : h1#title.heading
+    title : h1#title.heading
+      length : 1
+    [[Prototype]] : HTMLCollection
+
+
+
+
+3. querySelector()  [most used -> return the first occurance]
+
+>  document.querySelector('h2')
+<- <h2>​ heading 2​</h2>​
+
+>  document.querySelector('#title')
+<- <h1 id="title" class="heading"> DOM Learning <span style="display: none;">test text</span></h1>
+
+>  document.querySelector('.heading')
+<- <h1 id="title" class="heading"> DOM Learning <span style="display: none;">test text</span></h1>
+
+>  document.querySelector('input[type="Password"]')
+<- <input type=​"password" name id>​
+
+// some advance thing: 
+const myUl = document.querySelector('ul') // it will store <ul>...</ul> inside myUl
+const firstList = myUl.querySelector('li') // firstList will only store the first list, i.e. -> <li>one</li>
+
+// then how to store all lists?
+
+
+4. querySelectorAll()
+
+>  document.querySelectorAll('li')
+<- NodeList(3) [li, li, li]           
+
+// Note : NodeList is not same as Array.. it supports forEach() but doesn't support map()
+// also note that - > as querySelectorAll() returns a NodeList so we can't change the whole list together..
+   for that we need to select particular element
+
+>  const myH2 = document.querySelectorAll('h2')
+>  myH2.style.color = 'green' // this will give error
+>  myH2[0].style.color = 'green' // it is the correct way
+
+// some practice:
+
+> const tmpList = document.querySelectorAll('li')
+> tmpList.forEach((l)=>{ l.style.backgroundColor='green'}) // it will change the bg color of all lists
+
+
+
+**** More about getElementByClassName() *********
+=> it returns HTMLCollection list.. the problem is -  it doesn't contain any built in loop function
+So, to traverse we need to convert it into array
+
+const tmpClassList = document.getElementsByClassName('list-item')
+const covArr = Array.from(tmpClassList)
+covArr.forEach((li)=>{li.style.color = 'orange'})
+
+-->

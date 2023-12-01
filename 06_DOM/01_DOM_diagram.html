@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 id="heading"> DOM Learning</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</body>
+</html>
+
+<!-- ++++++++++++++++++++++++++++++ DOM Diagram +++++++++++++++++++++++++++++
+
+                                window
+                                  |
+                               document
+                                  |
+                                 html
+                           _______|_______
+                          |               |
+                         head            body
+                     _____|_____          |
+                    |           |        div
+                  meta       tittle       |--- attribute
+                    |           |         |          ___ attribute
+                attribute   text node     |--- h1---|
+                                          |         |___ text node
+                                          |
+                                          |          ___ attribute
+                                          |--- p ---|
+                                                    |___ text node
+
+
+* How to select and change document?
+=> document.getElementById('heading').innerHTML = "<h1>Rupam Sasmal</h1>"
+                                                    
+-->

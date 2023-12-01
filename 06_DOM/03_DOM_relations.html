@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Relations</title>
+</head>
+<body style="background-color: black; color: white;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div><div class="day">Friday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent');
+    console.log(parent);
+
+    // Move from parent to children
+    console.log(parent.children);
+    console.log(parent.children[0]);
+    console.log(parent.children[0].innerHTML);
+    for(let i=0;i<parent.children.length;i++){
+        console.log(parent.children[i].innerHTML);
+    }
+    parent.children[2].style.color='red';
+    
+    // first child & last child
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+
+    const child1= document.querySelector('.day') // it will select day[0]
+    console.log(child1);
+
+    // Move from child to parent
+    console.log(child1.parentElement);
+    
+    // Move from child to next sibling
+    console.log(child1.nextElementSibling);
+
+    // some iteresting stuff:
+    console.log(parent.childNodes); // this will give nodeList of 9 elements!! but there is only 4 children!! they how & why ?
+    // => because it treates all the space, enter as a node, that's the reason
+    
+    console.log(child1.nextSibling); // for the same reason it returns a text('Enter') not the next child element
+</script>
+</html>
