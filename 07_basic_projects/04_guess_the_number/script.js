@@ -77,8 +77,9 @@ function newGame() {
         numGuess=0 
         userInput.removeAttribute('disabled') // enable the form
         startOver.innerHTML=startOverValue // re-write previous html
-        guessSlot=document.querySelector(".guesses")
-        remaining= document.querySelector('.remaining')
+        guessSlot=document.querySelector(".guesses") // re updating the selector
+        remaining= document.querySelector('.remaining') // re updating the selector
+        disMessage.innerHTML='' // clearing the message board
         playGame=true
     })
 }
