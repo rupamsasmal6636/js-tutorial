@@ -5,8 +5,8 @@ console.log(randomNumber);
 // select all required elements
 const userInput=document.querySelector("#guessField")
 const submit=document.querySelector("#guessSubmit")
-const guessSlot=document.querySelector(".guesses")
-const remaining= document.querySelector('.remaining')
+let guessSlot=document.querySelector(".guesses")
+let remaining= document.querySelector('.remaining')
 const disMessage= document.querySelector('.displayMessage')
 const startOver= document.querySelector('.resultParas')
 const startOverValue=startOver.innerHTML; // to store previous html value of .resParas 
@@ -35,7 +35,7 @@ function validateGuess(guess) {
 // check the guess is equal the number or not
 function checkGuess(guess) {
     if(guess===randomNumber){
-        displayMessage("Congrats! You guessed the right number.");
+        displayMessage(`Congrats! You guessed the right number in ${numGuess+1} attempts`);
         endGame();
     }
     else if(guess<randomNumber)
@@ -58,7 +58,7 @@ function displayResult(guess) { // most important function
 }
 function checkPlayableOrNot() {
     if(numGuess>=10) {
-        displayMessage("Your all attempts are over!")
+        displayMessage(`Your all attempts are over! The correct number was ${randomNumber}`)
         endGame()
     }
 }
@@ -77,6 +77,8 @@ function newGame() {
         numGuess=0 
         userInput.removeAttribute('disabled') // enable the form
         startOver.innerHTML=startOverValue // re-write previous html
+        guessSlot=document.querySelector(".guesses")
+        remaining= document.querySelector('.remaining')
         playGame=true
     })
 }
