@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: aliceblue;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 35px;
+        }
+
+        .list {
+            margin: 10px;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #images {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #google {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Amazing images:</h1>
+    <div>
+        <ul id="images">
+            <!--we can use "onclick" event as an attribute itself, but it's not recommended now (it's used in react) -->
+            <li class="list"><img width="200px" id="photoshop" onclick="alert('clicked on photoshop by attribute event')"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li class="list"><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="japan"></li>
+            <li class="list"><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="river"></li>
+            <li class="list"><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="owl"></li>
+            <li class="list"><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="prayer"></li>
+            <li class="list"><a href="https://google.com" id="google" target="_blank">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('japan').onclick = function(){
+    //     alert("japan clicked by onclick event")
+    // }
+    // // it offers less feature but addEventLister() is much better as it offers propagation property, also can listen various type of events
+
+    // document.getElementById('river').addEventListener('click',function(){
+    //     alert('river clicked by eventListner')
+    // }, false)
+    /* Note about the 3rd parameter: [false -> default value]
+     * Event propagation-> it refers to how events travel through the DOM tree
+     * 2 types -> Event Bubbling and Capturing
+     * Bubbling -> down to up / inside to outside / child to parent / target to root
+     * Capturing -> up to down / outside to inside / parent to child / root to target 
+     * */
+
+    // //Testing propagation:
+    // // 1. propagation -> false [Bubbling] -> owl to images
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     alert('ul click, propagation false');
+    // }, false)
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     alert('owl click, propagation false');
+    // }) // default value -> false
+    
+    // // 2. propagation -> true [Capturing] -> images to owl
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     alert('ul click, propagation true');
+    //     e.stopPropagation(); // to stop the propagation -> next child event e jbena r
+    // }, true)
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     alert('owl click, propagation true');
+    //     e.stopPropagation(); // to stop the propagation -> next child event e jbena r
+    // }, true)
+
+    // // Event Object: [e]
+    // document.getElementById('prayer').addEventListener('click',function(e){
+    //     console.log(e);
+    //     alert('prayer clicked by eventListner');
+    // }, false)
+
+    // // preventDefault()
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault()
+    //     console.log('Google clicked');
+    // })
+    
+    /* More approaches:
+    // attachEvent() -> same like addEventListener(), used in internetExplorer
+    // on() -> used in jQuery
+
+    // More Things to learn in Events:
+    // types of event, timestamp, preventDefault
+    // target, toElement, srcElement, currentTarget
+    // Important for interview
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCodes 
+    */
+
+
+    // Small project: [whenever a pic is clicked, it will be deleted]
+    document.querySelector('#images').addEventListener('click',(e)=>{
+        e.preventDefault()
+        // console.log(e.target); // <img>
+        const parentLi=e.target.parentNode // <li>
+        
+        // parentLi.remove()
+        // it will be working fine but if i click on <li> then it's parent is <ul>, so whole list will be deleted
+        // so we need to verify the tagName
+        
+        if(e.target.tagName==='IMG') parentLi.remove()
+    })
+
+</script>
+
+</html>
