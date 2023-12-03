@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Out</title>
+</head>
+<body>
+    <h1>Learn Set Time Out</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // // setTimeout() is a method of WebAPI (not part of core JavaScript) used to delay the execution of a function
+    // setTimeout(() => {
+    //     console.log("Rupam Sasmal");
+    // }, 2000); 
+    
+    // Another way to do this:
+    const sayRupam = function() {
+        console.log("Rupam Sasmal");
+    }
+    // setTimeout(sayRupam(),2000) // sayRupam() is function execute, if we execute it, then it will immidiately executed... so we need to give the reference only so ->
+    setTimeout(sayRupam,2000) 
+
+    // Now we want to change the heading after 2sec.. how to do so?
+    const changeH1 = ()=>{
+        document.querySelector('h1').innerHTML='Rupam Sasmal'
+    }
+    const changeHeading = setTimeout(changeH1,3000);
+
+    // Now how to stop that timeOut if we want? 
+    // we can do using -> clearTimeOut()
+    document.querySelector('#stop').addEventListener('click',()=>{
+        clearTimeout(changeHeading)
+        console.log("Stopped");
+    })
+    // if we press on the stop button before 3sec it will not changed
+</script>
+</html>

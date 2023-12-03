@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+<body>
+    <h1>Learn Set Time Out</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // // setInterval() is a method of WebAPI used to execute a function repeatedly at a specified interval (delay). 
+    // setInterval(() => {
+    //     console.log("Rupam", Date.now());
+    // }, 3000);
+    
+    // // Another way to do this:
+    // const sayRupam = () => {
+    //     console.log("Rupam", Date.now());
+    // }
+    // setInterval(sayRupam,1000) 
+
+    // // we can pass some parameter inside setInterval()
+    // const sayRupamHi = (str) => {
+    //     console.log(str, "Rupam", Date.now());
+    // }
+    // setInterval(sayRupamHi, 2000,"hi"); 
+
+    // Now how to stop that interval? 
+    // we can do using -> clearInterval()
+
+    // Small assignment: start to start printing in console, stop to stop;
+    let storeInterval
+    document.querySelector('#start').addEventListener('click',()=>{
+        storeInterval=setInterval(() => {
+            console.log("Hi rupam", Date.now());
+        }, 1000);
+    })
+    document.querySelector('#stop').addEventListener('click',()=>{
+        clearTimeout(storeInterval)
+        console.log("Stopped");
+    })
+</script>
+</html>
