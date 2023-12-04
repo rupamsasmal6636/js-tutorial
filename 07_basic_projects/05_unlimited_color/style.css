@@ -1,0 +1,28 @@
+html {
+    font-family: sans-serif;
+}
+.container{
+    box-sizing: border-box;
+    text-align: center;
+    margin: 180px auto;
+    width: 650px;
+    /* background-color: #474747; */
+    font-size: 15px;
+}
+
+.button {
+    background-color: #161616;
+    color: #ffffff;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    border-style: none;
+    cursor: pointer;
+    margin: 15px;
+}
+.button:hover{
+    background-color: #ffffff;
+    color: #161616;
+    border: 2px solid black;
+}
