@@ -1,0 +1,29 @@
+Default properties of core JavaScript: [stand alone JavaScript engine]
+1. synchronous 
+2. single threaded [only one thread to execute & each operation waits for the last one to complete before ending]
+
+We can write 2 types of code in JavaScript
+         /               \
+        /                 \
+    Blocking          Non Blocking Code
+      |                     |
+ Read File sync       Read file async
+
+[Both are fine depend on the situation/use case]
+
+
+            Js Engine                                      Web API/Node API
+ ______________________________________        _______________________________________
+|   Memory heap         Call Stack     |      |   DOM API                             |
+|    _________          __________     |      | SetTimeout() ______      ___________  |
+|   |         |        |    fn  --|----|----> | SetInterval() _____|--> |Register   | |
+|   |         |        |    fn    |    |      | fetch()                 |Call Stack | |
+|   |         |        |  Global  |    |      |    |                    |___________| |
+|   |_________|        |__________|    |      |    | promise                   |      |
+|____________________________|___|_____|      |____|___________________________|______|
+                             |  /|\  _____________\|/_____                     |                 
+                             |   |__| High priority Queue |                    |
+                Add to      /|\     |_____________________|                    |
+                Call Stack   |            _______________                      |
+                             |__/________|  Task Queue   |_/___________________|
+                                \        |_______________| \
